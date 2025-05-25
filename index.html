@@ -5,533 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام إدارة مزرعة الأرانب</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Tahoma, sans-serif;
             background-color: #f8f9fa;
-        }
-        .app-container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
         }
-        .card {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        .card {
+            border-radius: 8px;
             margin-bottom: 20px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        .feature-card {
-            height: 100%;
-            transition: transform 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #0d6efd;
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="app" class="app-container">
-        <div class="text-center my-5">
-            <h1 class="mb-4">نظام إدارة مزرعة الأرانب</h1>
-            <p class="lead">النظام الأمثل لإدارة مزرعة الأرانب</p>
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1>نظام إدارة مزرعة الأرانب</h1>
+            <p class="lead">النظام المتكامل لإدارة مزارع الأرانب</p>
         </div>
-        <div class="row mb-4">
+
+        <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">إدارة الأرانب</div>
                     <div class="card-body">
-                        <i class="bi bi-rabbit2 feature-icon"></i>
-                        <h3>إدارة الأرانب</h3>
-                        <p>تسجيل ومتابعة بيانات الأرانب بشكل منظم</p>
-                        <button class="btn btn-primary mt-3" onclick="showRabbitsSection()">فتح</button>
+                        <p>تسجيل بيانات الأرانب ومتابعة حالتها</p>
+                        <ul>
+                            <li>تسجيل البيانات الأساسية</li>
+                            <li>متابعة الوزن والنمو</li>
+                            <li>تتبع سلالات الأرانب</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">إدارة التزاوج</div>
                     <div class="card-body">
-                        <i class="bi bi-hearts feature-icon"></i>
-                        <h3>إدارة التزاوج</h3>
-                        <p>متابعة عمليات التزاوج وجدولة المواعيد</p>
-                        <button class="btn btn-primary mt-3" onclick="showBreedingSection()">فتح</button>
+                        <p>تنظيم وجدولة عمليات التزاوج</p>
+                        <ul>
+                            <li>جدولة مواعيد التزاوج</li>
+                            <li>متابعة فترة الحمل</li>
+                            <li>تسجيل الولادات والمواليد</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">السجلات الصحية</div>
                     <div class="card-body">
-                        <i class="bi bi-heart-pulse feature-icon"></i>
-                        <h3>السجلات الصحية</h3>
-                        <p>متابعة الحالة الصحية والعلاجات</p>
-                        <button class="btn btn-primary mt-3" onclick="showHealthSection()">فتح</button>
+                        <p>متابعة الحالة الصحية والتطعيمات</p>
+                        <ul>
+                            <li>تسجيل التطعيمات</li>
+                            <li>متابعة العلاجات</li>
+                            <li>تنبيهات للفحوصات الدورية</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb-4">
+
+        <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">إدارة التغذية</div>
                     <div class="card-body">
-                        <i class="bi bi-basket feature-icon"></i>
-                        <h3>إدارة التغذية</h3>
-                        <p>تسجيل استهلاك العلف ومتابعة المخزون</p>
-                        <button class="btn btn-primary mt-3" onclick="showFeedSection()">فتح</button>
+                        <p>إدارة العلف وجدولة التغذية</p>
+                        <ul>
+                            <li>تسجيل استهلاك العلف</li>
+                            <li>متابعة المخزون</li>
+                            <li>جدولة مواعيد التغذية</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">الإدارة المالية</div>
                     <div class="card-body">
-                        <i class="bi bi-cash-coin feature-icon"></i>
-                        <h3>الإدارة المالية</h3>
                         <p>تسجيل المصروفات والإيرادات</p>
-                        <button class="btn btn-primary mt-3" onclick="showFinanceSection()">فتح</button>
+                        <ul>
+                            <li>تسجيل تكاليف العلف</li>
+                            <li>تسجيل مبيعات الأرانب</li>
+                            <li>حساب الأرباح والخسائر</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-4 mb-4">
-                <div class="card feature-card text-center p-4">
+                <div class="card">
+                    <div class="card-header">التقارير</div>
                     <div class="card-body">
-                        <i class="bi bi-file-earmark-bar-graph feature-icon"></i>
-                        <h3>التقارير</h3>
                         <p>تقارير وإحصائيات مفصلة</p>
-                        <button class="btn btn-primary mt-3" onclick="showReportsSection()">فتح</button>
+                        <ul>
+                            <li>تقارير الإنتاج</li>
+                            <li>تقارير مالية</li>
+                            <li>تقارير صحية</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="section-content" class="mt-4 d-none">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 id="section-title">عنوان القسم</h2>
-                <button class="btn btn-secondary" onclick="hideSection()">عودة</button>
-            </div>
-            <div id="section-body" class="card">
-                <div class="card-body">
-                    <!-- محتوى القسم سيظهر هنا -->
-                </div>
-            </div>
+        
+        <div class="alert alert-info mt-4">
+            <strong>ملاحظة:</strong> هذا النظام قيد التطوير حالياً، وسيتم إضافة المزيد من الميزات قريباً.
+        </div>
+        
+        <div class="text-center mt-5">
+            <p>جميع الحقوق محفوظة &copy; 2025</p>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // إنشاء قاعدة بيانات IndexedDB
-        let db;
-        const DB_NAME = 'RabbitFarmDB';
-        const DB_VERSION = 1;
-        // تهيئة قاعدة البيانات
-        const request = indexedDB.open(DB_NAME, DB_VERSION);
-        request.onerror = function(event) {
-            showAlert('حدث خطأ أثناء فتح قاعدة البيانات', 'danger');
-        };
-        request.onupgradeneeded = function(event) {
-            db = event.target.result;
-            
-            // إنشاء مخازن البيانات
-            if (!db.objectStoreNames.contains('rabbits')) {
-                const rabbitsStore = db.createObjectStore('rabbits', { keyPath: 'id', autoIncrement: true });
-                rabbitsStore.createIndex('name', 'name', { unique: false });
-                rabbitsStore.createIndex('gender', 'gender', { unique: false });
-            }
-            
-            if (!db.objectStoreNames.contains('breeding')) {
-                const breedingStore = db.createObjectStore('breeding', { keyPath: 'id', autoIncrement: true });
-                breedingStore.createIndex('date', 'breedingDate', { unique: false });
-            }
-            
-            if (!db.objectStoreNames.contains('health')) {
-                const healthStore = db.createObjectStore('health', { keyPath: 'id', autoIncrement: true });
-                healthStore.createIndex('date', 'date', { unique: false });
-            }
-            
-            if (!db.objectStoreNames.contains('feed')) {
-                const feedStore = db.createObjectStore('feed', { keyPath: 'id', autoIncrement: true });
-                feedStore.createIndex('date', 'date', { unique: false });
-            }
-            
-            if (!db.objectStoreNames.contains('finance')) {
-                const financeStore = db.createObjectStore('finance', { keyPath: 'id', autoIncrement: true });
-                financeStore.createIndex('date', 'date', { unique: false });
-            }
-        };
-        request.onsuccess = function(event) {
-            db = event.target.result;
-            console.log('تم فتح قاعدة البيانات بنجاح');
-        };
-        // وظائف عرض الأقسام
-        function showSection(title, content) {
-            document.getElementById('section-title').textContent = title;
-            document.getElementById('section-body').innerHTML = content;
-            document.getElementById('section-content').classList.remove('d-none');
-        }
-        function hideSection() {
-            document.getElementById('section-content').classList.add('d-none');
-        }
-        // قسم الأرانب
-        function showRabbitsSection() {
-            const content = `
-                <div class="d-flex justify-content-between mb-3">
-                    <button class="btn btn-primary" onclick="showAddRabbitForm()">
-                        <i class="bi bi-plus-circle"></i> إضافة أرنب جديد
-                    </button>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>الرقم</th>
-                                <th>الاسم</th>
-                                <th>النوع</th>
-                                <th>الجنس</th>
-                                <th>تاريخ الميلاد</th>
-                                <th>الحالة</th>
-                                <th>العمليات</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rabbits-table">
-                            <tr>
-                                <td colspan="7" class="text-center">جاري تحميل البيانات...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="rabbit-form-container" class="mt-4 d-none">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 id="rabbit-form-title">إضافة أرنب جديد</h5>
-                            <button type="button" class="btn-close" onclick="hideRabbitForm()"></button>
-                        </div>
-                        <div class="card-body">
-                            <form id="rabbit-form">
-                                <input type="hidden" id="rabbit-id">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="rabbit-name" class="form-label">الاسم</label>
-                                        <input type="text" class="form-control" id="rabbit-name" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="rabbit-breed" class="form-label">النوع</label>
-                                        <input type="text" class="form-control" id="rabbit-breed" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="rabbit-gender" class="form-label">الجنس</label>
-                                        <select class="form-select" id="rabbit-gender" required>
-                                            <option value="">اختر الجنس</option>
-                                            <option value="ذكر">ذكر</option>
-                                            <option value="أنثى">أنثى</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="rabbit-birthdate" class="form-label">تاريخ الميلاد</label>
-                                        <input type="date" class="form-control" id="rabbit-birthdate" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="rabbit-status" class="form-label">الحالة</label>
-                                    <select class="form-select" id="rabbit-status" required>
-                                        <option value="">اختر الحالة</option>
-                                        <option value="نشط">نشط</option>
-                                        <option value="حامل">حامل</option>
-                                        <option value="مريض">مريض</option>
-                                        <option value="غير نشط">غير نشط</option>
-                                        <option value="متوفي">متوفي</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="rabbit-notes" class="form-label">ملاحظات</label>
-                                    <textarea class="form-control" id="rabbit-notes" rows="3"></textarea>
-                                </div>
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-primary" onclick="saveRabbit()">حفظ</button>
-                                    <button type="button" class="btn btn-secondary" onclick="hideRabbitForm()">إلغاء</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            showSection('إدارة الأرانب', content);
-            loadRabbits();
-        }
-        function showAddRabbitForm() {
-            document.getElementById('rabbit-form').reset();
-            document.getElementById('rabbit-id').value = '';
-            document.getElementById('rabbit-form-title').textContent = 'إضافة أرنب جديد';
-            document.getElementById('rabbit-form-container').classList.remove('d-none');
-        }
-        function hideRabbitForm() {
-            document.getElementById('rabbit-form-container').classList.add('d-none');
-        }
-        function loadRabbits() {
-            const tableBody = document.getElementById('rabbits-table');
-            if (!tableBody) return;
-            
-            tableBody.innerHTML = '<tr><td colspan="7" class="text-center">جاري تحميل البيانات...</td></tr>';
-            
-            getAllRecords('rabbits')
-                .then(rabbits => {
-                    if (rabbits.length === 0) {
-                        tableBody.innerHTML = '<tr><td colspan="7" class="text-center">لا توجد أرانب مسجلة</td></tr>';
-                        return;
-                    }
-                    
-                    tableBody.innerHTML = '';
-                    rabbits.forEach(rabbit => {
-                        const birthDate = rabbit.birthDate ? new Date(rabbit.birthDate).toLocaleDateString('ar-EG') : '-';
-                        
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${rabbit.id}</td>
-                            <td>${rabbit.name || '-'}</td>
-                            <td>${rabbit.breed || '-'}</td>
-                            <td>${rabbit.gender || '-'}</td>
-                            <td>${birthDate}</td>
-                            <td>${rabbit.status || '-'}</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" onclick="editRabbit(${rabbit.id})">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteRabbit(${rabbit.id})">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                })
-                .catch(error => {
-                    tableBody.innerHTML = `<tr><td colspan="7" class="text-center text-danger">خطأ: ${error.message}</td></tr>`;
-                });
-        }
-        function editRabbit(id) {
-            getRecord('rabbits', id)
-                .then(rabbit => {
-                    if (!rabbit) {
-                        showAlert('الأرنب غير موجود', 'danger');
-                        return;
-                    }
-                    
-                    document.getElementById('rabbit-id').value = rabbit.id;
-                    document.getElementById('rabbit-name').value = rabbit.name || '';
-                    document.getElementById('rabbit-breed').value = rabbit.breed || '';
-                    document.getElementById('rabbit-gender').value = rabbit.gender || '';
-                    document.getElementById('rabbit-status').value = rabbit.status || '';
-                    document.getElementById('rabbit-notes').value = rabbit.notes || '';
-                    
-                    if (rabbit.birthDate) {
-                        const birthDate = new Date(rabbit.birthDate);
-                        const formattedDate = birthDate.toISOString().split('T')[0];
-                        document.getElementById('rabbit-birthdate').value = formattedDate;
-                    } else {
-                        document.getElementById('rabbit-birthdate').value = '';
-                    }
-                    
-                    document.getElementById('rabbit-form-title').textContent = 'تعديل بيانات الأرنب';
-                    document.getElementById('rabbit-form-container').classList.remove('d-none');
-                })
-                .catch(error => {
-                    showAlert('خطأ في تحميل بيانات الأرنب: ' + error.message, 'danger');
-                });
-        }
-        function deleteRabbit(id) {
-            if (confirm('هل أنت متأكد من حذف هذا الأرنب؟')) {
-                deleteRecord('rabbits', id)
-                    .then(() => {
-                        loadRabbits();
-                        showAlert('تم حذف الأرنب بنجاح', 'success');
-                    })
-                    .catch(error => {
-                        showAlert('خطأ في حذف الأرنب: ' + error.message, 'danger');
-                    });
-            }
-        }
-        function saveRabbit() {
-            const id = document.getElementById('rabbit-id').value;
-            const name = document.getElementById('rabbit-name').value;
-            const breed = document.getElementById('rabbit-breed').value;
-            const gender = document.getElementById('rabbit-gender').value;
-            const birthDate = document.getElementById('rabbit-birthdate').value;
-            const status = document.getElementById('rabbit-status').value;
-            const notes = document.getElementById('rabbit-notes').value;
-            
-            if (!name || !breed || !gender || !birthDate || !status) {
-                showAlert('يرجى ملء جميع الحقول المطلوبة', 'warning');
-                return;
-            }
-            
-            const rabbit = {
-                name,
-                breed,
-                gender,
-                birthDate: new Date(birthDate),
-                status,
-                notes
-            };
-            
-            if (id) {
-                // تحديث سجل موجود
-                updateRecord('rabbits', parseInt(id), rabbit)
-                    .then(() => {
-                        hideRabbitForm();
-                        loadRabbits();
-                        showAlert('تم تحديث بيانات الأرنب بنجاح', 'success');
-                    })
-                    .catch(error => {
-                        showAlert('خطأ في تحديث بيانات الأرنب: ' + error.message, 'danger');
-                    });
-            } else {
-                // إضافة سجل جديد
-                addRecord('rabbits', rabbit)
-                    .then(() => {
-                        hideRabbitForm();
-                        loadRabbits();
-                        showAlert('تمت إضافة الأرنب بنجاح', 'success');
-                    })
-                    .catch(error => {
-                        showAlert('خطأ في إضافة الأرنب: ' + error.message, 'danger');
-                    });
-            }
-        }
-        // باقي الأقسام
-        function showBreedingSection() {
-            showSection('إدارة التزاوج', '<p class="text-center">هذا القسم قيد التطوير حالياً، وسيكون متاحاً قريباً.</p>');
-        }
-        function showHealthSection() {
-            showSection('السجلات الصحية', '<p class="text-center">هذا القسم قيد التطوير حالياً، وسيكون متاحاً قريباً.</p>');
-        }
-        function showFeedSection() {
-            showSection('إدارة التغذية', '<p class="text-center">هذا القسم قيد التطوير حالياً، وسيكون متاحاً قريباً.</p>');
-        }
-        function showFinanceSection() {
-            showSection('الإدارة المالية', '<p class="text-center">هذا القسم قيد التطوير حالياً، وسيكون متاحاً قريباً.</p>');
-        }
-        function showReportsSection() {
-            showSection('التقارير', '<p class="text-center">هذا القسم قيد التطوير حالياً، وسيكون متاحاً قريباً.</p>');
-        }
-        // وظائف قاعدة البيانات
-        function addRecord(storeName, record) {
-            return new Promise((resolve, reject) => {
-                if (!db) {
-                    reject(new Error('قاعدة البيانات غير متاحة'));
-                    return;
-                }
-                
-                const transaction = db.transaction([storeName], 'readwrite');
-                const store = transaction.objectStore(storeName);
-                const request = store.add(record);
-                
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        }
-        function getRecord(storeName, id) {
-            return new Promise((resolve, reject) => {
-                if (!db) {
-                    reject(new Error('قاعدة البيانات غير متاحة'));
-                    return;
-                }
-                
-                const transaction = db.transaction([storeName], 'readonly');
-                const store = transaction.objectStore(storeName);
-                const request = store.get(id);
-                
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        }
-        function getAllRecords(storeName) {
-            return new Promise((resolve, reject) => {
-                if (!db) {
-                    reject(new Error('قاعدة البيانات غير متاحة'));
-                    return;
-                }
-                
-                const transaction = db.transaction([storeName], 'readonly');
-                const store = transaction.objectStore(storeName);
-                const request = store.getAll();
-                
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        }
-        function updateRecord(storeName, id, record) {
-            return new Promise((resolve, reject) => {
-                if (!db) {
-                    reject(new Error('قاعدة البيانات غير متاحة'));
-                    return;
-                }
-                
-                const transaction = db.transaction([storeName], 'readwrite');
-                const store = transaction.objectStore(storeName);
-                const getRequest = store.get(id);
-                
-                getRequest.onsuccess = () => {
-                    const existingRecord = getRequest.result;
-                    if (!existingRecord) {
-                        reject(new Error('السجل غير موجود'));
-                        return;
-                    }
-                    
-                    // دمج السجل الموجود مع البيانات الجديدة
-                    const updatedRecord = { ...existingRecord, ...record };
-                    
-                    // الاحتفاظ بالمعرف
-                    updatedRecord.id = id;
-                    
-                    // تحديث السجل
-                    const updateRequest = store.put(updatedRecord);
-                    
-                    updateRequest.onsuccess = () => resolve();
-                    updateRequest.onerror = () => reject(updateRequest.error);
-                };
-                
-                getRequest.onerror = () => reject(getRequest.error);
-            });
-        }
-        function deleteRecord(storeName, id) {
-            return new Promise((resolve, reject) => {
-                if (!db) {
-                    reject(new Error('قاعدة البيانات غير متاحة'));
-                    return;
-                }
-                
-                const transaction = db.transaction([storeName], 'readwrite');
-                const store = transaction.objectStore(storeName);
-                const request = store.delete(id);
-                
-                request.onsuccess = () => resolve();
-                request.onerror = () => reject(request.error);
-            });
-        }
-        // وظائف مساعدة
-        function showAlert(message, type = 'info') {
-            // إنشاء عنصر التنبيه
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
-            alertDiv.style.zIndex = 1050;
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            `;
-            
-            // إضافة التنبيه للصفحة
-            document.body.appendChild(alertDiv);
-            
-            // إزالة التنبيه بعد 3 ثوان
-            setTimeout(() => {
-                alertDiv.classList.remove('show');
-                setTimeout(() => {
-                    alertDiv.remove();
-                }, 150);
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
