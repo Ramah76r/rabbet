@@ -4,61 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام إدارة مزرعة الأرانب</title>
+    <!-- مكتبات أساسية -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
+    <!-- مكتبة تصميم -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
         }
-        .loader {
-            text-align: center;
-            padding: 50px;
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .welcome-message {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 50px auto;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
         }
-        h1 {
-            color: #0056b3;
-        }
-        p {
-            color: #666;
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
             margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.3s;
         }
-        .loading-spinner {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #0056b3;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #0d6efd;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6c757d;
+        }
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0a58ca;
+        }
+        .alert {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="rabbit-farm-app">
-        <div class="loader">
-            <h1>نظام إدارة مزرعة الأرانب</h1>
-            <div class="loading-spinner"></div>
-            <p>جاري تحميل النظام، يرجى الانتظار...</p>
+    <div class="app-container">
+        <div class="welcome-message">
+            <h1 class="mb-4">نظام إدارة مزرعة الأرانب</h1>
+            <p class="lead">
+                مرحباً بك في نظام إدارة مزرعة الأرانب - الحل المتكامل لإدارة مزرعتك بكفاءة عالية
+            </p>
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i>
+                نحن نعمل حالياً على إعداد النظام ليكون جاهزاً للاستخدام. يرجى العودة قريباً!
+            </div>
+            <p>
+                <a href="https://github.com/Ramah76r" class="btn btn-primary">
+                    <i class="bi bi-github"></i> زيارة صفحة المطور
+                </a>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-rabbit feature-icon"></i>
+                    <h3>إدارة الأرانب</h3>
+                    <p>سجل وتتبع جميع الأرانب في مزرعتك مع تفاصيل كاملة عن العمر والنوع والوزن والحالة الصحية.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-heart feature-icon"></i>
+                    <h3>إدارة التزاوج</h3>
+                    <p>تخطيط وجدولة عمليات التزاوج والولادة مع إشعارات للمتابعة والتذكير بالمواعيد المهمة.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-clipboard2-pulse feature-icon"></i>
+                    <h3>السجلات الصحية</h3>
+                    <p>تتبع التطعيمات والعلاجات والحالات الصحية لكل أرنب مع تنبيهات للفحوصات الدورية.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-basket feature-icon"></i>
+                    <h3>إدارة التغذية</h3>
+                    <p>تتبع استهلاك العلف وإدارة المخزون مع تذكيرات لإعادة الطلب عند انخفاض المستوى.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-cash-coin feature-icon"></i>
+                    <h3>الإدارة المالية</h3>
+                    <p>تسجيل المصروفات والإيرادات وتحليل الأرباح والخسائر مع تقارير مالية شاملة.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-bar-chart feature-icon"></i>
+                    <h3>التقارير والإحصائيات</h3>
+                    <p>إنشاء تقارير متنوعة وتحليلات بيانية لمساعدتك في اتخاذ قرارات أفضل لمزرعتك.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 نظام إدارة مزرعة الأرانب - جميع الحقوق محفوظة</p>
+            <p>
+                <small>تم تطويره بواسطة Ramah76r</small>
+            </p>
         </div>
     </div>
 
-    <script>
-        // إظهار شاشة التحميل لمدة ثانية واحدة ثم التوجيه
-        setTimeout(function() {
-            window.location.href = "https://rabbit-farm-manager.netlify.app/";
-        }, 1000);
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
