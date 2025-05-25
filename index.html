@@ -7,18 +7,58 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .loader {
+            text-align: center;
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .loading-spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0056b3;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div id="rabbit-farm-app" style="width:100%; min-height:600px;">
-        <div style="text-align:center; padding:50px;">
+    <div id="rabbit-farm-app">
+        <div class="loader">
             <h1>نظام إدارة مزرعة الأرانب</h1>
-            <p>جاري تحميل النظام...</p>
+            <div class="loading-spinner"></div>
+            <p>جاري تحميل النظام، يرجى الانتظار...</p>
         </div>
     </div>
 
     <script>
-        // يتم إعادة توجيه المستخدم إلى نسخة مستضافة بالكامل من التطبيق
-        window.location.href = "https://rabbit-farm-manager.netlify.app/";
+        // إظهار شاشة التحميل لمدة ثانية واحدة ثم التوجيه
+        setTimeout(function() {
+            window.location.href = "https://rabbit-farm-manager.netlify.app/";
+        }, 1000);
     </script>
 </body>
 </html>
