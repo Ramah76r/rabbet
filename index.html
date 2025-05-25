@@ -4,47 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام إدارة مزرعة الأرانب</title>
-    
-    <!-- المكتبات الأساسية -->
+    <!-- إضافة مكتبات Bootstrap و React -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
-    
-    <!-- Bootstrap و Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
-    <!-- ملفات التطبيق -->
-    <link rel="stylesheet" href="app.css">
-    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .form-control, .form-select, .btn {
+            border-radius: 8px;
+        }
+        .table th {
+            background-color: #f8f9fa;
+        }
+        .nav-tabs .nav-link {
+            border-radius: 8px 8px 0 0;
+        }
+        .nav-tabs .nav-link.active {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div id="rabbit-farm-app" class="container-fluid p-0" style="min-height:600px;">
-        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <div class="text-center">
-                <h2>نظام إدارة مزرعة الأرانب</h2>
-                <div class="spinner-border text-primary mt-3" role="status">
-                    <span class="visually-hidden">جاري التحميل...</span>
-                </div>
-                <p class="mt-3">جاري تحميل النظام...</p>
+    <div id="rabbit-farm-app" class="app-container">
+        <div class="text-center my-5">
+            <h1 class="mb-4">نظام إدارة مزرعة الأرانب</h1>
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">جاري التحميل...</span>
             </div>
+            <p class="mt-3">جاري تهيئة النظام، يرجى الانتظار...</p>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- تهيئة التطبيق -->
     <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                if (window.initRabbitFarm) {
-                    window.initRabbitFarm('rabbit-farm-app');
-                } else {
-                    document.getElementById('rabbit-farm-app').innerHTML = '<div class="alert alert-danger m-5"><h4>خطأ في التحميل</h4><p>لم يتم تحميل النظام بشكل صحيح. يرجى تحديث الصفحة أو المحاولة لاحقاً.</p></div>';
+        // مكونات النظام الرئيسية
+        document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء قاعدة البيانات
+            const dbName = 'RabbitFarmDB';
+            const dbVersion = 1;
+            let db;
+
+            // فتح قاعدة البيانات
+            const request = indexedDB.open(dbName, dbVersion);
+
+            request.onerror = function(event) {
+                showErrorMessage('حدث خطأ أثناء فتح قاعدة البيانات');
+            };
+
+            request.onupgradeneeded = function(event) {
+                db = event.target.result;
+                
+                // إنشاء جداول البيانات
+                if (!db.objectStoreNames.contains('rabbits')) {
+                    const rabbitsStore = db.createObjectStore('rabbits', { keyPath: 'id', autoIncrement: true });
+                    rabbitsStore.createIndex('name', 'name', { unique: false });
+                    rabbitsStore.createIndex('gender', 'gender', { unique: false });
                 }
-            }, 1000);
-        });
-    </script>
-</body>
-</html>
+                
+                if (!db.objectStoreNames.contains('breeding')) {
+                    const breedingStore = db.createObjectStore('breeding', { keyPath: 'id', autoIncrement: true });
+                    breedingStore.createIndex('date', 'breedingDate', { unique: false });
+                }
+                
+                if (!db.objectStoreNames.contains('health')) {
+                    const healthStore = db.createObjectStore('health', { keyPath: 'id', autoIncrement: true });
+                    healthStore.createIndex('rabbitId', 'rabbitId', { unique: false });
+                }
+                
+                if (!db.objectStoreNames.contains('feed')) {
+                    const feedStore = db.createObjectStore('feed', { keyPath: 'id', autoIncrement: true });
+                }
+                
+                if (!db.objectStoreNames.contains('finance')) {
+                    const financeStore = db.createObjectStore('finance', { keyPath: 'id', autoIncrement: true });
+                }
+            };
+
+            request.onsuccess = function(event) {
+                db = event.target.result;
+                initializeApp();
+            };
+
+            // تهيئة التطبيق
+            function initializeApp() {
+                const container = document.getElementById('rabbit-farm-app');
+                
+                // تحديث المحتوى
+                container.innerHTML = `
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded mb-4">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">نظام مزرعة الأرانب</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav me-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#" data-section="dashboard">الرئيسية</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="rabbits">الأرانب</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="breeding">التزاوج</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="health">الصحة</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="feed">التغذية</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="finance">المالية</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-section="reports">التقارير</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div id="content-area">
+                        <!-- هنا سيتم عرض محتوى القسم المختار -->
+                    </div>
+                `;
+                
+                // إضافة مستمعات الأحداث للتنقل
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // إزالة الفئة النشطة من جميع الروابط
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        
+                        // إضافة الفئة النشطة للرابط المختار
+                        this.classList.add('active');
+                        
+                        // عرض الق
